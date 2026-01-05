@@ -15,26 +15,19 @@ const NotFound: React.FC = () => {
 
       <div className="min-h-screen bg-background flex items-center justify-center">
         <div className="container mx-auto text-center px-4">
-          {/* Large 404 */}
-          <h1 className="font-display text-[12rem] md:text-[20rem] leading-none text-foreground opacity-10 select-none">
-            404
+          {/* Simple text - No illustrations */}
+          <h1 className="font-display text-5xl md:text-6xl text-foreground tracking-widest mb-4">
+            {t('404.title')}
           </h1>
+          <p className="text-foreground-secondary mb-10">
+            {t('404.subtitle')}
+          </p>
 
-          {/* Message */}
-          <div className="relative -mt-20 md:-mt-32">
-            <h2 className="font-display text-4xl md:text-6xl text-foreground tracking-wider mb-4">
-              {t('404.title')}
-            </h2>
-            <p className="text-foreground-secondary text-lg mb-12">
-              {t('404.subtitle')}
-            </p>
-
-            <Link to="/">
-              <Button variant="cta" size="xl" className="font-display tracking-widest">
-                {t('404.back')}
-              </Button>
-            </Link>
-          </div>
+          <Link to="/">
+            <Button variant="cta" size="lg" className="font-display tracking-widest">
+              {t('404.back')}
+            </Button>
+          </Link>
         </div>
       </div>
     </>

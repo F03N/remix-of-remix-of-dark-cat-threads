@@ -22,13 +22,13 @@ const About: React.FC = () => {
         <Header />
         <CartDrawer />
 
-        <main className="pt-24 md:pt-32">
+        <main className="pt-20 md:pt-24">
           {/* Hero Section */}
-          <div className="container mx-auto section-padding text-center">
-            <h1 className="font-display text-6xl md:text-8xl lg:text-9xl text-foreground tracking-wider mb-8">
+          <div className="container mx-auto py-16 md:py-24 text-center">
+            <h1 className="font-display text-5xl md:text-6xl text-foreground tracking-widest mb-6">
               {t('about.title')}
             </h1>
-            <p className="text-foreground-secondary text-xl md:text-2xl max-w-2xl mx-auto">
+            <p className="text-foreground-secondary text-lg max-w-lg mx-auto">
               {language === 'ar'
                 ? 'نحن لسنا مجرد علامة تجارية. نحن حركة.'
                 : "We're not just a brand. We're a movement."}
@@ -36,14 +36,14 @@ const About: React.FC = () => {
           </div>
 
           {/* Story Section */}
-          <section className="bg-section section-padding">
+          <section className="section-padding border-t border-border">
             <div className="container mx-auto">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
                 <div>
-                  <h2 className="font-display text-4xl md:text-6xl text-foreground tracking-wider mb-8">
+                  <h2 className="font-display text-3xl md:text-4xl text-foreground tracking-widest mb-6">
                     {t('about.story')}
                   </h2>
-                  <div className="space-y-6 text-foreground-secondary text-lg leading-relaxed">
+                  <div className="space-y-4 text-foreground-secondary leading-relaxed">
                     <p>
                       {language === 'ar'
                         ? 'بدأت Dark Cat Threads في شوارع عمان عام 2023. رؤية بسيطة: ملابس تتحدث قبل أن تتكلم.'
@@ -56,7 +56,7 @@ const About: React.FC = () => {
                     </p>
                   </div>
                 </div>
-                <div className="aspect-square bg-card overflow-hidden">
+                <div className="aspect-[4/5] bg-card overflow-hidden">
                   <img
                     src="/hoodie-1.jpg"
                     alt="Dark Cat Story"
@@ -68,12 +68,12 @@ const About: React.FC = () => {
           </section>
 
           {/* Mission Section */}
-          <section className="section-padding">
-            <div className="container mx-auto text-center">
-              <h2 className="font-display text-4xl md:text-6xl text-foreground tracking-wider mb-8">
+          <section className="section-padding border-t border-border">
+            <div className="container mx-auto text-center max-w-2xl">
+              <h2 className="font-display text-3xl md:text-4xl text-foreground tracking-widest mb-6">
                 {t('about.mission')}
               </h2>
-              <p className="text-foreground-secondary text-xl md:text-2xl max-w-3xl mx-auto leading-relaxed">
+              <p className="text-foreground-secondary leading-relaxed">
                 {language === 'ar'
                   ? 'نهدف إلى إعادة تعريف ثقافة الستريت وير في المنطقة العربية. جودة لا تساوم، تصاميم لا تُنسى، وأسعار عادلة.'
                   : 'We aim to redefine streetwear culture in the Arab region. Uncompromising quality, unforgettable designs, and fair prices.'}
@@ -82,12 +82,12 @@ const About: React.FC = () => {
           </section>
 
           {/* Values */}
-          <section className="bg-section section-padding">
+          <section className="section-padding border-t border-border">
             <div className="container mx-auto">
-              <h2 className="font-display text-4xl md:text-6xl text-foreground tracking-wider text-center mb-16">
+              <h2 className="font-display text-3xl md:text-4xl text-foreground tracking-widest text-center mb-12">
                 {t('about.values')}
               </h2>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
                 {[
                   {
                     titleAr: 'الجودة أولاً',
@@ -108,11 +108,11 @@ const About: React.FC = () => {
                     descEn: 'Proudly from Jordan. We support local industry and craftsmen.',
                   },
                 ].map((value, idx) => (
-                  <div key={idx} className="bg-card border border-border p-8 md:p-10">
-                    <h3 className="font-display text-2xl tracking-wider text-foreground mb-4">
+                  <div key={idx} className="text-center">
+                    <h3 className="font-display text-lg tracking-widest text-foreground mb-3">
                       {language === 'ar' ? value.titleAr : value.titleEn}
                     </h3>
-                    <p className="text-foreground-secondary leading-relaxed">
+                    <p className="text-foreground-secondary text-sm leading-relaxed">
                       {language === 'ar' ? value.descAr : value.descEn}
                     </p>
                   </div>

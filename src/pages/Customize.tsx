@@ -6,7 +6,8 @@ import CartDrawer from '@/components/CartDrawer';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useCart } from '@/contexts/CartContext';
-import { Upload, Type, Move, ZoomIn, ZoomOut } from 'lucide-react';
+import { Upload, ZoomIn, ZoomOut } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 const Customize: React.FC = () => {
   const { t, language } = useLanguage();
@@ -52,38 +53,40 @@ const Customize: React.FC = () => {
         <Header />
         <CartDrawer />
 
-        <main className="pt-24 md:pt-32">
+        <main className="pt-20 md:pt-24">
           <div className="container mx-auto section-padding">
             {/* Page Header */}
-            <h1 className="font-display text-5xl md:text-7xl lg:text-8xl text-foreground tracking-wider text-center mb-8">
-              {t('customize.title')}
-            </h1>
-            <p className="text-foreground-secondary text-center text-lg mb-16 max-w-xl mx-auto">
-              {language === 'ar'
-                ? 'ارفع تصميمك أو أضف نصك الخاص على هودي فاخر'
-                : 'Upload your design or add your own text to a premium hoodie'}
-            </p>
+            <div className="text-center mb-12 md:mb-16">
+              <h1 className="font-display text-4xl md:text-5xl text-foreground tracking-widest mb-4">
+                {t('customize.title')}
+              </h1>
+              <p className="text-foreground-secondary text-sm max-w-md mx-auto">
+                {language === 'ar'
+                  ? 'ارفع تصميمك أو أضف نصك الخاص على هودي فاخر'
+                  : 'Upload your design or add your own text to a premium hoodie'}
+              </p>
+            </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
               {/* Left: Canvas Preview */}
-              <div className="bg-card border border-border p-8 relative">
-                <div className="aspect-square relative overflow-hidden bg-background flex items-center justify-center">
+              <div className="relative">
+                <div className="aspect-square relative overflow-hidden bg-card">
                   {/* Hoodie Base */}
                   <img
                     src="/hoodie-1.jpg"
                     alt="Base Hoodie"
-                    className="w-full h-full object-cover absolute inset-0 opacity-50"
+                    className="w-full h-full object-cover opacity-40"
                   />
                   
                   {/* Print Area Overlay */}
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-1/2 h-1/2 border-2 border-dashed border-cta/50 flex items-center justify-center relative">
+                    <div className="w-1/2 h-1/2 border border-dashed border-foreground-secondary/30 flex items-center justify-center relative">
                       {/* Uploaded Image */}
                       {uploadedImage && (
                         <img
                           src={uploadedImage}
                           alt="Custom Design"
-                          className="max-w-full max-h-full object-contain"
+                          className="max-w-full max-h-full object-contain transition-transform duration-200"
                           style={{ transform: `scale(${scale})` }}
                         />
                       )}
@@ -91,7 +94,7 @@ const Customize: React.FC = () => {
                       {/* Custom Text */}
                       {customText && !uploadedImage && (
                         <p 
-                          className="font-display text-2xl md:text-4xl text-foreground text-center px-4"
+                          className="font-display text-xl md:text-2xl text-foreground text-center px-4 transition-transform duration-200"
                           style={{ transform: `scale(${scale})` }}
                         >
                           {customText}
@@ -100,9 +103,9 @@ const Customize: React.FC = () => {
 
                       {/* Empty State */}
                       {!uploadedImage && !customText && (
-                        <p className="text-foreground-secondary text-sm editorial-caps">
+                        <span className="text-foreground-tertiary text-xs tracking-wider uppercase">
                           {language === 'ar' ? 'منطقة الطباعة' : 'PRINT AREA'}
-                        </p>
+                        </span>
                       )}
                     </div>
                   </div>
@@ -111,23 +114,21 @@ const Customize: React.FC = () => {
                 {/* Zoom Controls */}
                 {(uploadedImage || customText) && (
                   <div className="flex items-center justify-center gap-4 mt-4">
-                    <Button
-                      variant="outline"
-                      size="icon"
+                    <button
+                      className="w-8 h-8 flex items-center justify-center text-foreground-secondary hover:text-foreground transition-smooth"
                       onClick={() => setScale((s) => Math.max(0.5, s - 0.1))}
                     >
                       <ZoomOut className="w-4 h-4" />
-                    </Button>
-                    <span className="text-foreground-secondary text-sm w-16 text-center">
+                    </button>
+                    <span className="text-foreground-tertiary text-xs w-12 text-center">
                       {Math.round(scale * 100)}%
                     </span>
-                    <Button
-                      variant="outline"
-                      size="icon"
+                    <button
+                      className="w-8 h-8 flex items-center justify-center text-foreground-secondary hover:text-foreground transition-smooth"
                       onClick={() => setScale((s) => Math.min(2, s + 0.1))}
                     >
                       <ZoomIn className="w-4 h-4" />
-                    </Button>
+                    </button>
                   </div>
                 )}
               </div>
@@ -136,7 +137,9 @@ const Customize: React.FC = () => {
               <div className="space-y-8">
                 {/* Upload Image */}
                 <div>
-                  <h3 className="editorial-caps text-foreground-secondary mb-4">{t('customize.upload')}</h3>
+                  <h3 className="text-foreground-secondary text-xs tracking-wider uppercase mb-3">
+                    {t('customize.upload')}
+                  </h3>
                   <input
                     ref={fileInputRef}
                     type="file"
@@ -144,22 +147,21 @@ const Customize: React.FC = () => {
                     onChange={handleImageUpload}
                     className="hidden"
                   />
-                  <Button
-                    variant="outline"
-                    className="w-full h-16 font-display tracking-wider gap-3 border-border text-foreground hover:border-cta"
+                  <button
+                    className="w-full h-14 border border-border text-foreground-secondary hover:border-foreground-secondary hover:text-foreground transition-smooth flex items-center justify-center gap-3 font-display tracking-wider text-sm"
                     onClick={() => fileInputRef.current?.click()}
                   >
-                    <Upload className="w-5 h-5" />
+                    <Upload className="w-4 h-4" />
                     {uploadedImage 
                       ? (language === 'ar' ? 'تغيير الصورة' : 'CHANGE IMAGE')
                       : (language === 'ar' ? 'رفع صورة' : 'UPLOAD IMAGE')}
-                  </Button>
+                  </button>
                 </div>
 
                 {/* Or divider */}
                 <div className="flex items-center gap-4">
                   <div className="flex-1 h-px bg-border" />
-                  <span className="text-foreground-secondary text-sm">
+                  <span className="text-foreground-tertiary text-xs">
                     {language === 'ar' ? 'أو' : 'OR'}
                   </span>
                   <div className="flex-1 h-px bg-border" />
@@ -167,47 +169,52 @@ const Customize: React.FC = () => {
 
                 {/* Add Text */}
                 <div>
-                  <h3 className="editorial-caps text-foreground-secondary mb-4">{t('customize.addText')}</h3>
-                  <div className="relative">
-                    <Type className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-foreground-secondary" />
-                    <input
-                      type="text"
-                      value={customText}
-                      onChange={(e) => {
-                        setCustomText(e.target.value);
-                        setUploadedImage(null);
-                      }}
-                      placeholder={language === 'ar' ? 'اكتب نصك هنا...' : 'Type your text here...'}
-                      className="w-full bg-background border border-border pl-12 pr-4 py-4 text-foreground focus:outline-none focus:border-cta transition-smooth"
-                    />
-                  </div>
+                  <h3 className="text-foreground-secondary text-xs tracking-wider uppercase mb-3">
+                    {t('customize.addText')}
+                  </h3>
+                  <input
+                    type="text"
+                    value={customText}
+                    onChange={(e) => {
+                      setCustomText(e.target.value);
+                      setUploadedImage(null);
+                    }}
+                    placeholder={language === 'ar' ? 'اكتب نصك هنا...' : 'Type your text here...'}
+                    className="w-full bg-transparent border border-border px-4 py-3 text-foreground text-sm focus:outline-none focus:border-foreground-secondary transition-smooth"
+                  />
                 </div>
 
                 {/* Size Selector */}
                 <div>
-                  <h3 className="editorial-caps text-foreground-secondary mb-4">{t('products.selectSize')}</h3>
+                  <h3 className="text-foreground-secondary text-xs tracking-wider uppercase mb-3">
+                    {t('products.selectSize')}
+                  </h3>
                   <div className="flex flex-wrap gap-3">
                     {sizes.map((size) => (
-                      <Button
+                      <button
                         key={size}
-                        variant={selectedSize === size ? 'cta' : 'outline'}
-                        className="min-w-[60px] font-display tracking-wider"
                         onClick={() => setSelectedSize(size)}
+                        className={cn(
+                          "min-w-[48px] h-11 px-4 font-display tracking-wider text-sm transition-smooth border",
+                          selectedSize === size
+                            ? "border-foreground text-foreground"
+                            : "border-border text-foreground-secondary hover:border-foreground-secondary"
+                        )}
                       >
                         {size}
-                      </Button>
+                      </button>
                     ))}
                   </div>
                 </div>
 
                 {/* Price */}
-                <div className="bg-section border border-border p-6">
+                <div className="pt-4 border-t border-border">
                   <div className="flex items-center justify-between">
-                    <span className="text-foreground-secondary">
+                    <span className="text-foreground-secondary text-sm">
                       {language === 'ar' ? 'السعر' : 'Price'}
                     </span>
-                    <span className="font-display text-3xl text-foreground">
-                      75.00 <span className="text-foreground-secondary text-lg">{t('products.currency')}</span>
+                    <span className="text-foreground">
+                      75 <span className="text-foreground-secondary text-sm">{t('products.currency')}</span>
                     </span>
                   </div>
                 </div>
