@@ -1,0 +1,226 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Dark Cat Brand Colors - STRICT PALETTE from Design Doc */
+    --background: 240 7% 4%; /* #0B0B0C */
+    --background-section: 240 5% 7%; /* #121214 */
+    --background-card: 240 4% 9%; /* #161618 */
+    
+    --foreground: 0 0% 100%; /* #FFFFFF */
+    --foreground-secondary: 0 0% 60%; /* #9A9A9A */
+    
+    --border: 240 4% 12%; /* #1F1F22 */
+    --border-subtle: 240 4% 10%;
+    
+    /* CTA Only - Muted Neon Green */
+    --cta: 82 85% 55%;
+    --cta-foreground: 0 0% 0%;
+    
+    /* Semantic mappings */
+    --card: 240 4% 9%;
+    --card-foreground: 0 0% 100%;
+    
+    --popover: 240 5% 7%;
+    --popover-foreground: 0 0% 100%;
+    
+    --primary: 82 85% 55%;
+    --primary-foreground: 0 0% 0%;
+    
+    --secondary: 240 4% 9%;
+    --secondary-foreground: 0 0% 100%;
+    
+    --muted: 240 5% 7%;
+    --muted-foreground: 0 0% 60%;
+    
+    --accent: 240 4% 12%;
+    --accent-foreground: 0 0% 100%;
+    
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+    
+    --input: 240 4% 12%;
+    --ring: 82 85% 55%;
+    
+    --radius: 0rem;
+
+    --sidebar-background: 240 5% 7%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 82 85% 55%;
+    --sidebar-primary-foreground: 0 0% 0%;
+    --sidebar-accent: 240 4% 12%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 240 4% 12%;
+    --sidebar-ring: 82 85% 55%;
+  }
+
+  .dark {
+    --background: 240 7% 4%;
+    --background-section: 240 5% 7%;
+    --background-card: 240 4% 9%;
+    
+    --foreground: 0 0% 100%;
+    --foreground-secondary: 0 0% 60%;
+    
+    --border: 240 4% 12%;
+    --border-subtle: 240 4% 10%;
+    
+    --cta: 82 85% 55%;
+    --cta-foreground: 0 0% 0%;
+    
+    --card: 240 4% 9%;
+    --card-foreground: 0 0% 100%;
+    
+    --popover: 240 5% 7%;
+    --popover-foreground: 0 0% 100%;
+    
+    --primary: 82 85% 55%;
+    --primary-foreground: 0 0% 0%;
+    
+    --secondary: 240 4% 9%;
+    --secondary-foreground: 0 0% 100%;
+    
+    --muted: 240 5% 7%;
+    --muted-foreground: 0 0% 60%;
+    
+    --accent: 240 4% 12%;
+    --accent-foreground: 0 0% 100%;
+    
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 100%;
+    
+    --border: 240 4% 12%;
+    --input: 240 4% 12%;
+    --ring: 82 85% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Cairo', sans-serif;
+  }
+
+  /* RTL Support */
+  [dir="rtl"] {
+    font-family: 'Cairo', sans-serif;
+  }
+
+  [dir="ltr"] {
+    font-family: 'Cairo', sans-serif;
+  }
+
+  /* Editorial Typography - Condensed Headlines */
+  h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    @apply tracking-wide;
+    line-height: 0.9;
+    letter-spacing: 0.02em;
+  }
+
+  h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    @apply tracking-wide;
+    line-height: 1;
+  }
+
+  h3 {
+    @apply font-bold;
+    line-height: 1.2;
+  }
+
+  p {
+    @apply font-normal;
+    line-height: 1.6;
+  }
+}
+
+@layer utilities {
+  .text-secondary {
+    color: hsl(var(--foreground-secondary));
+  }
+
+  .bg-section {
+    background-color: hsl(var(--background-section));
+  }
+
+  .bg-card-dark {
+    background-color: hsl(var(--background-card));
+  }
+
+  .border-subtle {
+    border-color: hsl(var(--border-subtle));
+  }
+
+  /* Editorial font utility */
+  .font-display {
+    font-family: 'Bebas Neue', sans-serif;
+  }
+
+  /* CTA Glow Effect - Subtle */
+  .cta-glow {
+    box-shadow: 0 0 30px hsl(var(--cta) / 0.2);
+  }
+
+  .cta-glow-hover:hover {
+    box-shadow: 0 0 40px hsl(var(--cta) / 0.3);
+  }
+
+  /* Smooth transitions */
+  .transition-smooth {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Product card image zoom - Subtle */
+  .img-zoom {
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .group:hover .img-zoom {
+    transform: scale(1.03);
+  }
+
+  /* Header transparent to solid */
+  .header-transparent {
+    background-color: transparent;
+    border-color: transparent;
+  }
+
+  .header-solid {
+    background-color: hsl(var(--background) / 0.95);
+    backdrop-filter: blur(12px);
+    border-color: hsl(var(--border));
+  }
+
+  /* Hide scrollbar */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Editorial spacing */
+  .section-padding {
+    @apply py-24 md:py-32 lg:py-40;
+  }
+
+  /* Uppercase tracking */
+  .editorial-caps {
+    @apply uppercase tracking-[0.2em] text-xs font-semibold;
+  }
+}

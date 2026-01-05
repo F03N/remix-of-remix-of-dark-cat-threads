@@ -1,0 +1,44 @@
+import React from 'react';
+import { Helmet } from 'react-helmet-async';
+import Header from '@/components/Header';
+import Hero from '@/components/Hero';
+import TrustBar from '@/components/TrustBar';
+import ProductGrid from '@/components/ProductGrid';
+import Footer from '@/components/Footer';
+import CartDrawer from '@/components/CartDrawer';
+import { useLanguage } from '@/contexts/LanguageContext';
+
+const Index: React.FC = () => {
+  const { language } = useLanguage();
+
+  return (
+    <>
+      <Helmet>
+        <title>{language === 'ar' ? 'دارك كات ثريدز - ستريت وير فاخر' : 'Dark Cat Threads - Premium Streetwear'}</title>
+        <meta
+          name="description"
+          content={
+            language === 'ar'
+              ? 'ستريت وير فاخر من الأردن. إصدارات محدودة بجودة عالية.'
+              : 'Premium streetwear from Jordan. Limited editions with high quality.'
+          }
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="canonical" href="https://darkcatthreads.com" />
+      </Helmet>
+
+      <div className="min-h-screen bg-background">
+        <Header />
+        <CartDrawer />
+        <main>
+          <Hero />
+          <TrustBar />
+          <ProductGrid />
+        </main>
+        <Footer />
+      </div>
+    </>
+  );
+};
+
+export default Index;
