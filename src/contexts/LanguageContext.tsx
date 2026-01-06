@@ -13,27 +13,38 @@ interface LanguageContextType {
 const translations: Record<Language, Record<string, string>> = {
   ar: {
     // Navigation
+    'nav.home': 'الرئيسية',
+    'nav.hoodies': 'الهوديات',
+    'nav.men': 'رجالي',
+    'nav.women': 'نسائي',
+    'nav.youth': 'شبابي',
     'nav.shop': 'تسوق',
-    'nav.hoodies': 'هوديز',
     'nav.customize': 'تخصيص',
     'nav.about': 'عنا',
-    'nav.search': 'بحث',
     'nav.cart': 'السلة',
     
     // Hero
     'hero.title': 'ليس مجرد قماش',
     'hero.subtitle': 'إنه بيان.',
-    'hero.cta': 'استكشف المجموعة',
+    'hero.cta': 'استعرض المجموعة',
     
-    // Trust Bar
-    'trust.cotton': 'قطن فاخر',
-    'trust.limited': 'إصدارات محدودة',
-    'trust.shipping': 'شحن سريع',
+    // Features
+    'features.premium': 'خامات فاخرة',
+    'features.exclusive': 'تصميم حصري',
+    'features.shipping': 'توصيل داخل الأردن',
+    
+    // Categories
+    'categories.title': 'اختر أسلوبك',
+    'categories.men': 'هودي رجالي',
+    'categories.women': 'هودي نسائي',
+    'categories.youth': 'هودي شبابي',
+    'categories.explore': 'استعرض',
     
     // Products
     'products.title': 'المجموعة',
     'products.viewProduct': 'عرض المنتج',
-    'products.addToCart': 'أضف للسلة',
+    'products.addToCart': 'أضف إلى السلة',
+    'products.buyNow': 'اشتري الآن',
     'products.customize': 'تخصيص',
     'products.currency': 'د.أ',
     'products.filter': 'تصفية',
@@ -43,10 +54,14 @@ const translations: Record<Language, Record<string, string>> = {
     'products.priceLow': 'السعر: منخفض إلى مرتفع',
     'products.priceHigh': 'السعر: مرتفع إلى منخفض',
     'products.size': 'المقاس',
+    'products.price': 'السعر',
     'products.selectSize': 'اختر المقاس',
-    'products.details': 'التفاصيل',
-    'products.fabric': 'القماش والعناية',
+    'products.selectQuantity': 'الكمية',
+    'products.details': 'الوصف',
+    'products.fabric': 'الخامة',
+    'products.care': 'الإرشادات',
     'products.shipping': 'الشحن',
+    'products.related': 'منتجات مشابهة',
     
     // Cart
     'cart.title': 'السلة',
@@ -58,9 +73,9 @@ const translations: Record<Language, Record<string, string>> = {
     
     // Checkout
     'checkout.title': 'إتمام الشراء',
-    'checkout.shipping': 'معلومات الشحن',
-    'checkout.payment': 'الدفع',
-    'checkout.review': 'مراجعة الطلب',
+    'checkout.step1': 'المعلومات',
+    'checkout.step2': 'العنوان',
+    'checkout.step3': 'الدفع',
     'checkout.firstName': 'الاسم الأول',
     'checkout.lastName': 'الاسم الأخير',
     'checkout.email': 'البريد الإلكتروني',
@@ -68,6 +83,13 @@ const translations: Record<Language, Record<string, string>> = {
     'checkout.address': 'العنوان',
     'checkout.city': 'المدينة',
     'checkout.placeOrder': 'تأكيد الطلب',
+    
+    // Footer
+    'footer.brand': 'Dark Cat',
+    'footer.quickLinks': 'روابط سريعة',
+    'footer.contact': 'تواصل معنا',
+    'footer.description': 'ستريت وير فاخر من الأردن.',
+    'footer.rights': 'جميع الحقوق محفوظة',
     
     // About
     'about.title': 'عنا',
@@ -82,14 +104,6 @@ const translations: Record<Language, Record<string, string>> = {
     'customize.preview': 'معاينة',
     'customize.addToCart': 'أضف للسلة',
     
-    // Footer
-    'footer.description': 'ستريت وير فاخر من الأردن.',
-    'footer.policies': 'السياسات',
-    'footer.privacy': 'الخصوصية',
-    'footer.terms': 'الشروط',
-    'footer.returns': 'الاسترجاع',
-    'footer.rights': 'جميع الحقوق محفوظة',
-    
     // 404
     '404.title': 'لا شيء هنا',
     '404.subtitle': 'الصفحة غير موجودة',
@@ -97,11 +111,14 @@ const translations: Record<Language, Record<string, string>> = {
   },
   en: {
     // Navigation
-    'nav.shop': 'SHOP',
+    'nav.home': 'HOME',
     'nav.hoodies': 'HOODIES',
+    'nav.men': 'MEN',
+    'nav.women': 'WOMEN',
+    'nav.youth': 'YOUTH',
+    'nav.shop': 'SHOP',
     'nav.customize': 'CUSTOMIZE',
     'nav.about': 'ABOUT',
-    'nav.search': 'Search',
     'nav.cart': 'Cart',
     
     // Hero
@@ -109,15 +126,23 @@ const translations: Record<Language, Record<string, string>> = {
     'hero.subtitle': "IT'S A STATEMENT.",
     'hero.cta': 'EXPLORE COLLECTION',
     
-    // Trust Bar
-    'trust.cotton': 'Premium Cotton',
-    'trust.limited': 'Limited Editions',
-    'trust.shipping': 'Fast Shipping',
+    // Features
+    'features.premium': 'Premium Materials',
+    'features.exclusive': 'Exclusive Design',
+    'features.shipping': 'Jordan Delivery',
+    
+    // Categories
+    'categories.title': 'Choose Your Style',
+    'categories.men': 'Men\'s Hoodie',
+    'categories.women': 'Women\'s Hoodie',
+    'categories.youth': 'Youth Hoodie',
+    'categories.explore': 'Explore',
     
     // Products
     'products.title': 'COLLECTION',
     'products.viewProduct': 'VIEW PRODUCT',
     'products.addToCart': 'ADD TO CART',
+    'products.buyNow': 'BUY NOW',
     'products.customize': 'CUSTOMIZE',
     'products.currency': 'JOD',
     'products.filter': 'Filter',
@@ -127,10 +152,14 @@ const translations: Record<Language, Record<string, string>> = {
     'products.priceLow': 'Price: Low to High',
     'products.priceHigh': 'Price: High to Low',
     'products.size': 'Size',
+    'products.price': 'Price',
     'products.selectSize': 'Select Size',
-    'products.details': 'Details',
-    'products.fabric': 'Fabric & Care',
+    'products.selectQuantity': 'Quantity',
+    'products.details': 'Description',
+    'products.fabric': 'Material',
+    'products.care': 'Care',
     'products.shipping': 'Shipping',
+    'products.related': 'Related Products',
     
     // Cart
     'cart.title': 'CART',
@@ -142,9 +171,9 @@ const translations: Record<Language, Record<string, string>> = {
     
     // Checkout
     'checkout.title': 'CHECKOUT',
-    'checkout.shipping': 'Shipping Information',
-    'checkout.payment': 'Payment',
-    'checkout.review': 'Review Order',
+    'checkout.step1': 'Information',
+    'checkout.step2': 'Address',
+    'checkout.step3': 'Payment',
     'checkout.firstName': 'First Name',
     'checkout.lastName': 'Last Name',
     'checkout.email': 'Email',
@@ -152,6 +181,13 @@ const translations: Record<Language, Record<string, string>> = {
     'checkout.address': 'Address',
     'checkout.city': 'City',
     'checkout.placeOrder': 'PLACE ORDER',
+    
+    // Footer
+    'footer.brand': 'Dark Cat',
+    'footer.quickLinks': 'Quick Links',
+    'footer.contact': 'Contact Us',
+    'footer.description': 'Premium streetwear from Jordan.',
+    'footer.rights': 'All rights reserved',
     
     // About
     'about.title': 'ABOUT',
@@ -166,14 +202,6 @@ const translations: Record<Language, Record<string, string>> = {
     'customize.preview': 'Preview',
     'customize.addToCart': 'ADD TO CART',
     
-    // Footer
-    'footer.description': 'Premium streetwear from Jordan.',
-    'footer.policies': 'Policies',
-    'footer.privacy': 'Privacy',
-    'footer.terms': 'Terms',
-    'footer.returns': 'Returns',
-    'footer.rights': 'All rights reserved',
-    
     // 404
     '404.title': 'NOTHING HERE',
     '404.subtitle': 'Page not found',
@@ -184,7 +212,7 @@ const translations: Record<Language, Record<string, string>> = {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [language, setLanguageState] = useState<Language>('en');
+  const [language, setLanguageState] = useState<Language>('ar'); // Arabic first
   const direction: Direction = language === 'ar' ? 'rtl' : 'ltr';
 
   useEffect(() => {
