@@ -11,15 +11,15 @@ const ProductGrid: React.FC = () => {
   return (
     <section id="products" className="bg-background section-padding">
       <div className="container mx-auto">
-        {/* Section Header - Editorial, not loud */}
+        {/* Section Header */}
         <div className="text-center mb-12 md:mb-16">
-          <h2 className="font-display text-4xl md:text-5xl text-foreground tracking-widest">
+          <h2 className="font-display text-3xl md:text-4xl text-foreground tracking-widest">
             {t('products.title')}
           </h2>
         </div>
 
-        {/* Product Grid - 3-column desktop, editorial spacing */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 lg:gap-12">
+        {/* Product Grid - Clean, equal card sizes */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-10">
           {products.slice(0, 6).map((product, index) => (
             <div
               key={product.id}
@@ -31,15 +31,15 @@ const ProductGrid: React.FC = () => {
           ))}
         </div>
 
-        {/* View All - Subtle secondary action */}
-        <div className="text-center mt-16 md:mt-20">
+        {/* View All */}
+        <div className="text-center mt-14 md:mt-20">
           <Link to="/shop">
             <Button 
               variant="ctaSecondary" 
               size="lg" 
               className="font-display tracking-widest"
             >
-              {t('products.viewAll') || 'VIEW ALL'}
+              {t('nav.hoodies')}
             </Button>
           </Link>
         </div>

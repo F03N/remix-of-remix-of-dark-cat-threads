@@ -1,7 +1,6 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { ChevronDown } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Hero: React.FC = () => {
@@ -15,32 +14,33 @@ const Hero: React.FC = () => {
           src="/hero-hoodie.jpg"
           alt="Dark Cat Hoodie"
           className="w-full h-full object-cover"
+          loading="eager"
         />
-        {/* Subtle gradient overlay - not overpowering */}
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent" />
+        {/* Dark gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-background/20" />
       </div>
 
-      {/* Content - Bottom Left, Generous Spacing */}
+      {/* Content - Bottom positioned with generous spacing */}
       <div className="relative z-10 h-full flex items-end">
-        <div className="container mx-auto pb-24 md:pb-32 lg:pb-40">
-          <div className="max-w-2xl space-y-6 md:space-y-8">
-            {/* Single Headline - Bold but not oversized */}
+        <div className="container mx-auto pb-20 md:pb-28 lg:pb-36">
+          <div className="max-w-xl space-y-6">
+            {/* Single bold headline */}
             <h1 
-              className="text-5xl md:text-6xl lg:text-7xl text-foreground opacity-0 animate-fade-in"
+              className="text-4xl md:text-5xl lg:text-6xl text-foreground opacity-0 animate-fade-in"
               style={{ animationDelay: '0.2s' }}
             >
               {t('hero.title')}
             </h1>
             
-            {/* Subtitle - Calm, secondary */}
+            {/* Mysterious tagline */}
             <p 
-              className="text-lg md:text-xl text-foreground-secondary font-display tracking-widest opacity-0 animate-fade-in"
+              className="text-lg text-foreground-secondary font-display tracking-widest opacity-0 animate-fade-in"
               style={{ animationDelay: '0.4s' }}
             >
               {t('hero.subtitle')}
             </p>
 
-            {/* Single CTA - Calm strength */}
+            {/* Single CTA */}
             <div 
               className="opacity-0 animate-fade-in pt-4" 
               style={{ animationDelay: '0.6s' }}
@@ -53,11 +53,6 @@ const Hero: React.FC = () => {
             </div>
           </div>
         </div>
-      </div>
-
-      {/* Scroll Indicator - Very subtle */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 opacity-30">
-        <ChevronDown className="w-6 h-6 text-foreground" strokeWidth={1} />
       </div>
     </section>
   );

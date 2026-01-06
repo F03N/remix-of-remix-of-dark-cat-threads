@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ShoppingBag, Menu, X, Globe } from 'lucide-react';
+import { ShoppingBag, Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { cn } from '@/lib/utils';
@@ -27,10 +27,11 @@ const Header: React.FC = () => {
   };
 
   const navLinks = [
-    { href: '/shop', label: t('nav.shop') },
-    { href: '/shop?category=hoodies', label: t('nav.hoodies') },
-    { href: '/customize', label: t('nav.customize') },
-    { href: '/about', label: t('nav.about') },
+    { href: '/', label: t('nav.home') },
+    { href: '/shop', label: t('nav.hoodies') },
+    { href: '/shop?category=men', label: t('nav.men') },
+    { href: '/shop?category=women', label: t('nav.women') },
+    { href: '/shop?category=youth', label: t('nav.youth') },
   ];
 
   return (
@@ -44,8 +45,7 @@ const Header: React.FC = () => {
         )}
       >
         <div className="container mx-auto">
-          {/* Reduced height: h-16 mobile, h-18 desktop */}
-          <div className="flex items-center justify-between h-16 md:h-[72px]">
+          <div className="flex items-center justify-between h-14 md:h-16">
             {/* Mobile Menu Button */}
             <Button
               variant="headerGhost"
@@ -56,37 +56,47 @@ const Header: React.FC = () => {
               <Menu className="w-5 h-5" />
             </Button>
 
-            {/* Desktop Navigation - Left */}
-            <nav className="hidden md:flex items-center gap-8">
+            {/* Desktop Navigation - Left/Right based on direction */}
+            <nav className={cn(
+              "hidden md:flex items-center gap-6",
+              direction === 'rtl' ? 'order-last' : 'order-first'
+            )}>
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
                   to={link.href}
-                  className="text-foreground-secondary hover:text-foreground transition-smooth font-display text-base tracking-wider"
+                  className="text-foreground-secondary hover:text-foreground transition-smooth text-sm tracking-wide"
                 >
                   {link.label}
                 </Link>
               ))}
             </nav>
 
-            {/* Logo - Center */}
-            <Link to="/" className="absolute left-1/2 -translate-x-1/2">
+            {/* Logo - Right side for RTL, Left for LTR */}
+            <Link 
+              to="/" 
+              className={cn(
+                "absolute",
+                direction === 'rtl' ? 'right-4 md:right-6' : 'left-4 md:left-6'
+              )}
+            >
               <span className="font-display text-xl md:text-2xl tracking-widest text-foreground">
                 DARK CAT
               </span>
             </Link>
 
-            {/* Right Actions - Minimal */}
-            <div className="flex items-center gap-2 md:gap-4">
+            {/* Right Actions */}
+            <div className={cn(
+              "flex items-center gap-3",
+              direction === 'rtl' ? 'order-first' : 'order-last'
+            )}>
               {/* Language Toggle */}
-              <Button
-                variant="headerGhost"
-                size="icon"
+              <button
                 onClick={toggleLanguage}
-                className="hidden md:flex"
+                className="hidden md:flex text-foreground-secondary hover:text-foreground transition-smooth text-sm tracking-wide"
               >
-                <Globe className="w-4 h-4" />
-              </Button>
+                {language === 'ar' ? 'EN' : 'عربي'}
+              </button>
 
               {/* Cart */}
               <Button 
@@ -107,7 +117,7 @@ const Header: React.FC = () => {
         </div>
       </header>
 
-      {/* Mobile Menu Overlay - Clean */}
+      {/* Mobile Menu Overlay */}
       <div
         className={cn(
           "fixed inset-0 z-[60] bg-background transition-transform duration-300 md:hidden",
@@ -116,17 +126,14 @@ const Header: React.FC = () => {
       >
         <div className="flex flex-col h-full p-6">
           <div className="flex items-center justify-between mb-12">
-            <Button
-              variant="headerGhost"
-              size="icon"
+            <button
               onClick={toggleLanguage}
-              className="flex items-center gap-2"
+              className="flex items-center gap-2 text-foreground-secondary"
             >
-              <Globe className="w-5 h-5" />
-              <span className="text-sm font-display tracking-wider text-foreground-secondary">
+              <span className="text-sm tracking-wider">
                 {language === 'ar' ? 'EN' : 'عربي'}
               </span>
-            </Button>
+            </button>
             <Button
               variant="headerGhost"
               size="icon"
@@ -141,7 +148,7 @@ const Header: React.FC = () => {
               <Link
                 key={link.href}
                 to={link.href}
-                className="font-display text-3xl text-foreground hover:text-foreground-secondary transition-smooth tracking-wider"
+                className="font-display text-2xl text-foreground hover:text-foreground-secondary transition-smooth tracking-wider"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {link.label}

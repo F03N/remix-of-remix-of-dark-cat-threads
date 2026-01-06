@@ -2,7 +2,8 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
-import TrustBar from '@/components/TrustBar';
+import FeatureStrip from '@/components/FeatureStrip';
+import CategorySection from '@/components/CategorySection';
 import ProductGrid from '@/components/ProductGrid';
 import Footer from '@/components/Footer';
 import CartDrawer from '@/components/CartDrawer';
@@ -14,13 +15,13 @@ const Index: React.FC = () => {
   return (
     <>
       <Helmet>
-        <title>{language === 'ar' ? 'دارك كات ثريدز - ستريت وير فاخر' : 'Dark Cat Threads - Premium Streetwear'}</title>
+        <title>{language === 'ar' ? 'دارك كات - ستريت وير فاخر' : 'Dark Cat - Premium Streetwear'}</title>
         <meta
           name="description"
           content={
             language === 'ar'
-              ? 'ستريت وير فاخر من الأردن. إصدارات محدودة بجودة عالية.'
-              : 'Premium streetwear from Jordan. Limited editions with high quality.'
+              ? 'ستريت وير فاخر من الأردن. هوديات حصرية بجودة عالية.'
+              : 'Premium streetwear from Jordan. Exclusive hoodies with high quality.'
           }
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -32,7 +33,8 @@ const Index: React.FC = () => {
         <CartDrawer />
         <main>
           <Hero />
-          <TrustBar />
+          <FeatureStrip />
+          <CategorySection />
           <ProductGrid />
         </main>
         <Footer />
